@@ -1,0 +1,60 @@
+<div class="content-layout">
+  <h1 class="content__title">External API</h1>
+  <div class="content__body">
+    <p>
+      Use the buttons below to request resources from an API server.
+      <br />
+      Each API endpoint has a different access control level.
+      <br />
+      <strong>Only authenticated users should access this page.</strong>
+    </p>
+
+    <div class="messages-grid">
+      <div class="messages-grid__header">
+        API Endpoint by Access Control Level
+      </div>
+      <div class="messages-grid__options">
+        <button
+          (click)="getPublicResource()"
+          class="messages-grid__option"
+          [class.messages-grid__option--active]="
+            (selectedAccessControlLevel$ | async) === PUBLIC
+          "
+        >
+          Public
+        </button>
+        <button
+          (click)="getProtectedResource()"
+          class="messages-grid__option"
+          [class.messages-grid__option--active]="
+            (selectedAccessControlLevel$ | async) === PROTECTED
+          "
+        >
+          Protected
+        </button>
+        <button
+          (click)="getRbacResource()"
+          class="messages-grid__option"
+          [class.messages-grid__option--active]="
+            (selectedAccessControlLevel$ | async) === RBAC
+          "
+        >
+          RBAC
+        </button>
+        <button
+          (click)="checkCorsAllowedMethod()"
+          class="messages-grid__option"
+          [class.messages-grid__option--active]="
+            (selectedAccessControlLevel$ | async) === CORS
+          "
+        >
+          CORS
+        </button>
+      </div>
+      <app-code-snippet
+        [title]="apiEndpoint$ | async"
+        [code]="apiResponse$ | async | json"
+      ></app-code-snippet>
+    </div>
+  </div>
+</div>

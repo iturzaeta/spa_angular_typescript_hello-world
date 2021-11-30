@@ -1,0 +1,78 @@
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-grid__info">
+      <div class="footer-info__message">
+        <p class="footer-message__headline">
+          <span>This sample application is brought to you by&nbsp;</span
+          ><ng-container
+            *ngTemplateOutlet="
+              resourceLink;
+              context: {
+                $implicit: { path: 'https://auth0.com/', label: 'Auth0' }
+              }
+            "
+          ></ng-container>
+        </p>
+        <p class="footer-message__description">
+          <a
+            class="footer__hyperlink"
+            href="https://auth0.com/docs/quickstarts/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Securely implement authentication using Auth0 on any stack and any
+            device&nbsp;<u>in less than 10 minutes</u></a
+          >
+        </p>
+      </div>
+      <div class="footer-info__button">
+        <button (click)="createAuthAccount()" class="button button--secondary">
+          Create Free Auth0 Account
+        </button>
+      </div>
+      <div class="footer-info__resource-list">
+        <div
+          class="footer-info__resource-list-item"
+          *ngFor="let resource of resourceList"
+        >
+          <ng-container
+            *ngTemplateOutlet="
+              resourceLink;
+              context: {
+                $implicit: resource
+              }
+            "
+          ></ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="footer-grid__brand">
+      <div class="footer-brand">
+        <img
+          class="footer-brand__logo"
+            src="https://cdn.auth0.com/blog/hello-auth0/auth0-shield.svg"
+          alt="Auth0"
+          width="20"
+          height="22.22"
+        />
+        <a
+          class="footer__hyperlink"
+          href="https://auth0.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Auth0 Inc
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<ng-template #resourceLink let-link>
+  <a
+    class="footer__hyperlink"
+    [href]="link.path"
+    target="_blank"
+    rel="noopener noreferrer"
+    >{{ link.label }}</a
+  >
+</ng-template>
