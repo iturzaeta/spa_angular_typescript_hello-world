@@ -2,7 +2,10 @@
   <h1 class="content__title">Profile</h1>
   <div class="content__body">
     <p>
-      <strong>Only authenticated users should access this page.</strong>
+      You can use the ID Token to get the profile information of an
+      authenticated user.
+      <br />
+      <strong>Only authenticated users can access this page.</strong>
     </p>
     <ng-container *ngIf="user$ | async as user">
       <div class="profile-grid">
@@ -15,7 +18,7 @@
         </div>
         <ng-container *ngIf="code$ | async as code">
           <div class="profile__details">
-            <app-code-snippet [title]="title" [code]="code"></app-code-snippet>
+            <app-code-snippet [code]="code"></app-code-snippet>
           </div>
         </ng-container>
       </div>

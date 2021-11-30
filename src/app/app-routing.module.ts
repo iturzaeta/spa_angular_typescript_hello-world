@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () =>
       import('./features/profile/profile.module').then((m) => m.ProfileModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'external-api',
@@ -19,6 +21,11 @@ const routes: Routes = [
       import('./features/external-api/external-api.module').then(
         (m) => m.ExternalApiModule
       ),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'callback',
+    children: [],
   },
 ];
 

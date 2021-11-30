@@ -16,5 +16,6 @@ import { RouterModule } from '@angular/router';
       },
     ]),
   ],
+  exports: [ProfileComponent],
 })
 export class ProfileModule {}
