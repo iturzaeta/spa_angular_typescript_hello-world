@@ -8,6 +8,8 @@ import { map } from 'rxjs/operators';
   styles: [],
 })
 export class ProfileComponent {
+  title = 'Decoded ID Token';
+
   user$ = this.auth.user$;
 
   code$ = this.user$.pipe(map((user) => JSON.stringify(user, null, 2)));
